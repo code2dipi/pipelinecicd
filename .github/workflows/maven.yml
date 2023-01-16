@@ -32,9 +32,18 @@ jobs:
      # run: mvn -B package --file pom.xml
       run: mvn clean install
 
+
       # Test
     - name: Test
-      run: mvn test
+      run: mvn clean test
+      # list current directory
+    - name: list the current directory
+      run: ls -a
+
+    - name: check the target folder
+      run: |
+        cd target
+        ls -a
 
      # Generate test report
     - name: Test report
