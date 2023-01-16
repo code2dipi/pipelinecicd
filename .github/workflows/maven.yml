@@ -37,14 +37,14 @@ jobs:
       run: mvn test
 
      # Generate test report
-    - name: Test report
+    - name: Report
       uses: dorny/test-reporter@v1
-      if: success()|| failure()
+      if: always()
       with:
-        name: Test Results
-        path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+        name: Cypress Tests
+        path: cypress/results/results.xml
         reporter: java-junit
-        java-version: 11
+        fail-on-error: true
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
