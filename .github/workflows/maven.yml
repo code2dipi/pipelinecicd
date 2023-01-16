@@ -42,7 +42,7 @@ jobs:
 
     - name: check the target folder
       run: |
-        cd target
+        cd target/surefire-reports
         ls -a
 
      # Generate test report
@@ -52,7 +52,7 @@ jobs:
       if: success() || failure()
       with:
         name: Test Results
-        path: ${{ github.workspace }}/target/WorkflowCicdApplicationTests-TestSuite.xml
+        path: ${{ github.workspace }}/target/surefire-reports/WorkflowCicdApplicationTests-TestSuite.xml
         reporter: java-junit
         java-version: 11
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
